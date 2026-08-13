@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KHQR - SNLGBINSIIS</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.card {
+  width: 420px;
+  background: #fff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  padding-bottom: 26px;
+}
+.banner {
+  position: relative;
+  background: #c8102e;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%);
+}
+.khqr {
+  color: #fff;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 6px;
+}
+.name {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  color: #111;
+  letter-spacing: 1px;
+  padding: 30px 24px 26px;
+  text-transform: uppercase;
+}
+.divider {
+  border-top: 2px dashed #d7d7d7;
+  margin: 0 30px;
+}
+.qr-wrap {
+  position: relative;
+  width: 260px;
+  margin: 28px auto 18px;
+}
+.qr-wrap img { width: 260px; height: 260px; display: block; }
+.logo {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #c8102e;
+}
+.logo::after {
+  content: ''; position: absolute; inset: 10px;
+  border-radius: 50%; border: 2px solid #fff;
+}
+.foot {
+  text-align: center; font-size: 11px; letter-spacing: 1px;
+  color: #999; text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="banner"><span class="khqr">KHQR</span></div>
+    <div class="name">SNLGBINSIIS</div>
+    <div class="divider"></div>
+    <div class="qr-wrap">
+      <img src="data:image/png;base64,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" alt="KHQR" />
+      <div class="logo"></div>
+    </div>
+    <div class="foot">Member of KHQR &middot; Accepted here</div>
+  </div>
+</body>
+</html>
