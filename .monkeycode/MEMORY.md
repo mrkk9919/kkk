@@ -50,3 +50,15 @@ Entries discovered by the Agent during task execution should follow this format:
   - 正确 KHQR 结构：`00:01 + 01:11(静态) + 29:{00:bakongAccountId} + 52:5999 + 53:116(KHR)/840(USD) + 58:KH + 59:商户名(客户真实姓名) + 60:Phnom Penh + 63:CRC`；个人用 Tag 29，商户用 Tag 30
   - 生成结果必须用官方 SDK 交叉验证（`konthaina-khqr` npm 包，`new KHQRGenerator('individual')...generate()` + `KHQRGenerator.verify()`）
   - QR 生成的商户名应使用客户真实姓名（如 SNLGBINSIIS），并传 `merchantName` 参数；QR 图片用 errorCorrectionLevel 'H' 以支持中心 logo
+
+[Project Knowledge Summary]
+- Date: 2026-08-13
+- Context: 用户反馈无法登录，排查发现后端未启动，补齐运行环境后启动成功
+- Category: Operations & Deployment
+- Instructions:
+  - 后端 `/workspace/backend` 只有编译产物 `dist`，无 `src` 源码、无 `package.json`、无 `node_modules`；需手动创建 `package.json`（NestJS 11 + TypeORM 0.3 + pg）并 `npm install`
+  - 后端依赖 PostgreSQL：`apt-get install -y postgresql` 后 `service postgresql start`，建库 `createdb bakong_dev`，postgres 密码为 `postgres`
+  - 运行前需创建 `.env`（参考 `.env.example`）；`dist/config/data-source.js` 中 entities/migrations glob 为 `.ts` 后缀，必须改为 `.js` 才能加载
+  - 建表：`cd backend && npx typeorm migration:run -d dist/config/data-source.js`（`uuid_generate_v4` 依赖 Postgres 内置，无需插件）
+  - 启动后端：`cd backend && node dist/main.js`（端口 3000，全局前缀 `api/v1`）；前端 vite 代理 `/api` → `localhost:3000`
+  - 管理登录：`admin` / `admin123`（来自 `.env` 的 `ADMIN_USERNAME`/`ADMIN_PASSWORD`）

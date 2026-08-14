@@ -47,8 +47,8 @@ exports.dataSourceOptions = {
     database: process.env.NODE_ENV === 'test'
         ? process.env.DB_DATABASE_TEST ?? 'bakong_test'
         : process.env.DB_DATABASE ?? 'bakong_dev',
-    entities: [__dirname + '/../entities/*.entity.ts'],
-    migrations: [__dirname + '/../migrations/*.ts'],
+    entities: [__dirname + '/../entities/*.entity.js'],
+    migrations: [__dirname + '/../migrations/*.js'],
     synchronize: false,
     logging: false,
 };
